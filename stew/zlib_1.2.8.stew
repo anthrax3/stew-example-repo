@@ -1,0 +1,20 @@
+$name    = "zlib";
+$version = "1.2.8";
+$package = "$name-$version";
+$file    = "$package.tar.gz";
+@depends = ();
+
+prepare {
+    "tar xzf '$file'"
+};
+
+build {
+    "cd '$package'",
+    "./configure --prefix=$ENV{PREFIX}",
+    "make"
+};
+
+install {
+    "cd '$package'",
+    "make install"
+};
