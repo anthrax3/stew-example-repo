@@ -3,7 +3,7 @@
 $name    = "libtest-simple-perl";
 $version = "1.302086";
 $package = "$name-$version";
-@depends = ('perl', 'libpathtools-perl', 'libfile-temp-perl', 'libscalar-list-utils-perl', 'libstorable-perl');
+@depends = ('perl', 'libfile-temp-perl', 'libscalar-list-utils-perl', 'libstorable-perl');
 $file    = "Test-Simple-1.302086.tar.gz";
 
 

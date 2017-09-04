@@ -3,7 +3,7 @@
 $name    = "libpathtools-perl";
 $version = "3.62";
 $package = "$name-$version";
-@depends = ('perl', 'libcarp-perl', 'libscalar-list-utils-perl', 'libtest-perl', 'libtest-simple-perl');
+@depends = ('perl', 'libcarp-perl', 'libscalar-list-utils-perl', 'libtest-simple-perl');
 $file    = "PathTools-3.62.tar.gz";
 
 
