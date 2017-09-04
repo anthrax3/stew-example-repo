@@ -1,0 +1,19 @@
+$name    = "mawk";
+$version = "1.3.4-20150503";
+$package = "$name-$version";
+$file    = "$package.tar.gz";
+
+prepare {
+    "tar xzf '$file'"
+};
+
+build {
+    "cd '$package'",
+    "./configure --prefix=$ENV{PREFIX}",
+    "make"
+};
+
+install {
+    "cd '$package'",
+    "make install DESTDIR=$ENV{DESTDIR}"
+};

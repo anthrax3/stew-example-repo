@@ -1,0 +1,20 @@
+$name    = "ncurses";
+$version = "6.0";
+$package = "$name-$version";
+$file    = "$package.tar.gz";
+@depends = ('mawk');
+
+prepare {
+    "tar xzf '$file'"
+};
+
+build {
+    "cd '$package'",
+    "./configure --prefix=$ENV{PREFIX} --enable-widec",
+    "make"
+};
+
+install {
+    "cd '$package'",
+    "make install DESTDIR=$ENV{DESTDIR}"
+};

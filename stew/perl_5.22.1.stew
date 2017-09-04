@@ -1,0 +1,38 @@
+$name    = "perl";
+$version = "5.22.1";
+$package = "$name-$version";
+$file    = "$package.tar.gz";
+@depends = ('patch','less');
+
+prepare {
+    "tar xzf '$file'",
+    "cd $package",
+};
+
+build {
+    my $use64 = $ENV{STEW_ARCH} eq 'x86_64' ? '-Duse64bitall' : '-Duse64bitint';
+
+    my $use_relocatable = `cat /etc/issue | grep -i "core linux"` ? "" : "-Uuseshrplib -Duserelocatableinc";
+    my $vendor_prefix = $use_relocatable ? ".../.." : "$ENV{PREFIX}";
+
+    "cd '$package'",
+    "./Configure \\
+    -Duselargefiles \\
+    $use64 \\
+    -Dprefix=$ENV{PREFIX} \\
+    -Dman1dir=none \\
+    -Dman3dir=none \\
+    $use_relocatable \\
+    -Dvendorprefix=$vendor_prefix \\
+    -Accflags=-DPERLIO_BUFSIZ=32768 \\
+    -Uafs \\
+    -Ud_csh \\
+    -Ud_ualarm \\
+    -Uusesfio \\
+    -Uusenm \\
+    -Ui_libutil \\
+    -des",
+    "make"
+};
+
+install { "cd '$package'", "make install" };

@@ -1,0 +1,20 @@
+$name    = "less";
+$version = "481";
+$package = "$name-$version";
+$file    = "$package.tar.gz";
+@depends = ('ncurses');
+
+prepare {
+    "tar xzf '$file'"
+};
+
+build {
+    "cd '$package'",
+    "./configure --prefix=$ENV{PREFIX}",
+    "make"
+};
+
+install {
+    "cd '$package'",
+    "make install DESTDIR=$ENV{DESTDIR}"
+};
