@@ -1,6 +1,6 @@
 This is an example repository for example app [stew-example-app](https://github.com/vti/stew-example-app).
 
-See also [stew](https://github.com/vti/stew) to learn what's it all about.
+See also [stew](https://github.com/vti/stew) to learn what it's all about.
 
 # How did I generate CPAN modules?
 
